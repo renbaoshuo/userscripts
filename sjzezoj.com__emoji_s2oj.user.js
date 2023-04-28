@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Emoji S2OJ
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @author       Baoshuo
 // @match        https://sjzezoj.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=sjzezoj.com
@@ -11,29 +11,32 @@
 (function () {
     'use strict';
 
+    // Use SM.MS VVIP (China mainland CDN) endpoint
+    var SM_MS_ENDPOINT = '//s1.baoshuo.ren'; // '//arina.loli.net';
+
     var QQ_EMOJIS = {
-        yiw: 'https://www.emojiall.com/img/platform/qq/031@2x.gif',
-        shuai: 'https://www.emojiall.com/img/platform/qq/035@2x.gif',
-        jy: 'https://www.emojiall.com/img/platform/qq/000@2x.gif',
-        zhm: 'https://www.emojiall.com/img/platform/qq/030@2x.gif',
-        shui: 'https://www.emojiall.com/img/platform/qq/008@2x.gif',
-        oh: 'https://www.emojiall.com/img/platform/qq/066@2x.gif',
-        hsh: 'https://www.emojiall.com/img/platform/qq/103@2x.gif',
-        zhq: 'https://s2.loli.net/2023/02/28/atHeX39NGlMfnYI.gif',
-        kuk: 'https://www.emojiall.com/img/platform/qq/016@2x.gif',
-        tiao: 'https://www.emojiall.com/img/platform/qq/041@2x.gif',
-        qd: 'https://www.emojiall.com/img/platform/qq/074@2x.gif',
-        kx: 'https://www.emojiall.com/img/platform/qq/216@2x.gif',
-        my: 'https://www.emojiall.com/img/platform/qq/219@2x.gif',
-        ll: 'https://www.emojiall.com/img/platform/qq/005@2x.gif',
-        gz: 'https://www.emojiall.com/img/platform/qq/073@2x.gif',
-        qiao: 'https://www.emojiall.com/img/platform/qq/037@2x.gif',
-        kk: 'https://www.emojiall.com/img/platform/qq/081@2x.gif',
-        cy: 'https://www.emojiall.com/img/platform/qq/013@2x.gif',
-        dz: 'https://www.emojiall.com/img/platform/qq/172@2x.gif',
-        gg: 'https://www.emojiall.com/img/platform/qq/010@2x.gif',
-        hanx: 'https://www.emojiall.com/img/platform/qq/027@2x.gif',
-        fad: 'https://www.emojiall.com/img/platform/qq/039@2x.gif',
+        yiw: SM_MS_ENDPOINT + '/2023/04/28/WxCtcMJmDNh6zTq.gif', // 'https://www.emojiall.com/img/platform/qq/031@2x.gif',
+        shuai: SM_MS_ENDPOINT + '/2023/04/28/qmQElb483eX1xpO.gif', // 'https://www.emojiall.com/img/platform/qq/035@2x.gif',
+        jy: SM_MS_ENDPOINT + '/2023/04/28/eZcGjlyVSbh4fmY.gif', // 'https://www.emojiall.com/img/platform/qq/000@2x.gif',
+        zhm: SM_MS_ENDPOINT + '/2023/04/28/MxA3jwUIHuzvsk7.gif', // 'https://www.emojiall.com/img/platform/qq/030@2x.gif',
+        shui: SM_MS_ENDPOINT + '/2023/04/28/h8BnplbPmH1Quc2.gif', // 'https://www.emojiall.com/img/platform/qq/008@2x.gif',
+        oh: SM_MS_ENDPOINT + '/2023/04/28/cEWinw3NHSKDzuX.gif', // 'https://www.emojiall.com/img/platform/qq/066@2x.gif',
+        hsh: SM_MS_ENDPOINT + '/2023/04/28/oWmGH1RrItnbU93.gif', // 'https://www.emojiall.com/img/platform/qq/103@2x.gif',
+        zhq: SM_MS_ENDPOINT + '/2023/04/28/xTiR9swp7SQ6Ulr.gif', // 'https://s2.loli.net/2023/02/28/atHeX39NGlMfnYI.gif',
+        kuk: SM_MS_ENDPOINT + '/2023/04/28/J34PTRjQ8nFtg5v.gif', // 'https://www.emojiall.com/img/platform/qq/016@2x.gif',
+        tiao: SM_MS_ENDPOINT + '/2023/04/28/yp8ufSIWNeMBnHg.gif', // 'https://www.emojiall.com/img/platform/qq/041@2x.gif',
+        qd: SM_MS_ENDPOINT + '/2023/04/28/MxNOVyJL8Fje6Wn.gif', // 'https://www.emojiall.com/img/platform/qq/074@2x.gif',
+        kx: SM_MS_ENDPOINT + '/2023/04/28/67UXiKBobnGdrMv.gif', // 'https://www.emojiall.com/img/platform/qq/216@2x.gif',
+        my: SM_MS_ENDPOINT + '/2023/04/28/KbRWY14sT6gFHqV.gif', // 'https://www.emojiall.com/img/platform/qq/219@2x.gif',
+        ll: SM_MS_ENDPOINT + '/2023/04/28/hvPqgWMSU74l3xp.gif', // 'https://www.emojiall.com/img/platform/qq/005@2x.gif',
+        gz: SM_MS_ENDPOINT + '/2023/04/28/atQDXAGq9snToUY.gif', // 'https://www.emojiall.com/img/platform/qq/073@2x.gif',
+        qiao: SM_MS_ENDPOINT + '/2023/04/28/MBqvzfFmaGIUNHc.gif', // 'https://www.emojiall.com/img/platform/qq/037@2x.gif',
+        kk: SM_MS_ENDPOINT + '/2023/04/28/jPofqydGtmRegHs.gif', // 'https://www.emojiall.com/img/platform/qq/081@2x.gif',
+        cy: SM_MS_ENDPOINT + '/2023/04/28/ZnNVOvu5qXibHes.gif', // 'https://www.emojiall.com/img/platform/qq/013@2x.gif',
+        dz: SM_MS_ENDPOINT + '/2023/04/28/trULEIgTBhQuiJy.gif', // 'https://www.emojiall.com/img/platform/qq/172@2x.gif',
+        gg: SM_MS_ENDPOINT + '/2023/04/28/O2DzI95QcJ8f1Kd.gif', // 'https://www.emojiall.com/img/platform/qq/010@2x.gif',
+        hanx: SM_MS_ENDPOINT + '/2023/04/28/q3EfL2lkvowWy7i.gif', // 'https://www.emojiall.com/img/platform/qq/027@2x.gif',
+        fad: SM_MS_ENDPOINT + '/2023/04/28/TzIYXrhWDCVGiHS.gif', // 'https://www.emojiall.com/img/platform/qq/039@2x.gif',
     };
 
     function getScoreLevel(x) {
